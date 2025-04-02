@@ -71,13 +71,13 @@ const Receipt: React.FC = () => {
                     <img src={ubaLogo} alt="UBA Logo" width={100} height={100} />
                 </div>
                 <div className="merchant-info">
-                    <p><strong>{transaction.merchantName || 'N/A'}</strong></p>
-                    <p>{transaction.merchantAddress || 'Address Here'}</p>
+                    <p><strong>{transaction?.merchantName || 'N/A'}</strong></p>
+                    <p>{transaction?.merchantAddress || 'Address Here'}</p>
                 </div>
                 <hr />
                 <div className="transaction-info">
-                    <p><strong>M/ID:</strong> {transaction.merchantID || 'N/A'}</p>
-                    <p><strong>P/Type:</strong> {transaction.paymentType || 'N/A'}</p>
+                    <p><strong>M/ID:</strong> {transaction?.merchantID || 'N/A'}</p>
+                    <p><strong>P/Type:</strong> {transaction?.paymentType || 'N/A'}</p>
                     {transaction.paymentType?.toLowerCase().includes('card') && (
                         <>
                             <p><strong>Card Name:</strong> {transaction.cardName || 'N/A'}</p>
@@ -87,11 +87,11 @@ const Receipt: React.FC = () => {
                             <p><strong>C/Scheme:</strong> {transaction.cardScheme || 'N/A'}</p>
                         </>
                     )}
-                    <p><strong>Stan#:</strong> {transaction.stan || 'N/A'}</p>
-                    <p><strong>D/Time:</strong> {new Date(transaction.transactionDate).toLocaleString()}</p>
-                    <p><strong>RRN:</strong> {transaction.retrievalReferenceNumber || 'N/A'}</p>
+                    <p><strong>Stan#:</strong> {transaction?.stan || 'N/A'}</p>
+                    <p><strong>D/Time:</strong> {transaction?.transactionDate ? new Date(transaction.transactionDate).toLocaleString() : 'N/A'}</p>
+                    <p><strong>RRN:</strong> {transaction?.retrievalReferenceNumber || 'N/A'}</p>
                     <p className="bold large">
-                        Amount: NGN {transaction.amount ? transaction.amount.toFixed(2) : '0.00'}
+                        Amount: NGN {transaction?.amount ? transaction.amount.toFixed(2) : '0.00'}
                     </p>
                 </div>
                 <hr />
